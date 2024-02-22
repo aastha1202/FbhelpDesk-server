@@ -38,7 +38,6 @@ app.post('/get-page-messages', (req,res)=>{
     .then(data => {
       data.data.forEach(async conversation => {
         conversation.messages.data.forEach(async messageData => {
-            // Check if message with the same ID already exists
             const existingMessage = await Message.findOne({ id: messageData.id });
             if (!existingMessage) {
                 const message = new Message({
